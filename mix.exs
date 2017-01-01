@@ -25,12 +25,7 @@ defmodule UeberauthExample.Mixfile do
                     :phoenix_ecto,
                     :postgrex,
                     :oauth,
-                    :ueberauth_facebook,
-                    :ueberauth_google,
-                    :ueberauth_github,
-                    :ueberauth_identity,
-                    :ueberauth_slack,
-                    :ueberauth_twitter]]
+                    :ueberauth_buffer]]
   end
 
   # Specifies which paths to compile per environment.
@@ -55,6 +50,7 @@ defmodule UeberauthExample.Mixfile do
      {:ueberauth_identity, "~> 0.2"},
      {:ueberauth_slack, "~> 0.2"},
      {:ueberauth_twitter, "~> 0.2"},
+     {:ueberauth_buffer, "~> 0.0.1", github: "amarsahinovic/ueberauth_buffer"},
 
      {:dogma, ">= 0.0.0", only: [:dev, :test]}
    ]

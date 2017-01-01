@@ -10,7 +10,7 @@ config :ueberauth_example, UeberauthExample.Endpoint,
   url: [host: "localhost"],
   root: Path.dirname(__DIR__),
   render_errors: [accepts: ~w(html json)],
-  secret_key_base: System.get_env("SECRET_KEY_BASE"),
+  secret_key_base: "p1cbNLA8NftaX3nJVSBKPuSlCFWlFbs3vCKEklSF8UKE7llxYxsMiw8Y49IL6gsYPS2lxU4sXQT37KOi2Tsmgi2cPRywzqILHF3FqVVeDzXc45TisCbZ1Kl0",
   pubsub: [name: UeberauthExample.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
@@ -33,39 +33,13 @@ config :phoenix, :generators,
 
 config :ueberauth, Ueberauth,
   providers: [
-    facebook: { Ueberauth.Strategy.Facebook, [] },
-    github: { Ueberauth.Strategy.Github, [] },
-    google: { Ueberauth.Strategy.Google, [] },
-    identity: { Ueberauth.Strategy.Identity, [
-        callback_methods: ["POST"],
-        uid_field: :username,
-        nickname_field: :username,
-      ] },
-    slack: { Ueberauth.Strategy.Slack, [] },
-    twitter: { Ueberauth.Strategy.Twitter, []}
+    buffer: { Ueberauth.Strategy.Buffer, [] }
   ]
 
-config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,
-  client_id: System.get_env("FACEBOOK_APP_ID"),
-  client_secret: System.get_env("FACEBOOK_APP_SECRET"),
-  redirect_uri: System.get_env("FACEBOOK_REDIRECT_URI")
-
-config :ueberauth, Ueberauth.Strategy.Github.OAuth,
-  client_id: System.get_env("GITHUB_CLIENT_ID"),
-  client_secret: System.get_env("GITHUB_CLIENT_SECRET")
-
-config :ueberauth, Ueberauth.Strategy.Google.OAuth,
-  client_id: System.get_env("GOOGLE_CLIENT_ID"),
-  client_secret: System.get_env("GOOGLE_CLIENT_SECRET"),
-  redirect_uri: System.get_env("GOOGLE_REDIRECT_URI")
-
-config :ueberauth, Ueberauth.Strategy.Slack.OAuth,
-  client_id: System.get_env("SLACK_CLIENT_ID"),
-  client_secret: System.get_env("SLACK_CLIENT_SECRET")
-
-config :ueberauth, Ueberauth.Strategy.Twitter.OAuth,
-  consumer_key: System.get_env("TWITTER_CONSUMER_KEY"),
-  consumer_secret: System.get_env("TWITTER_CONSUMER_SECRET")
+config :ueberauth, Ueberauth.Strategy.Buffer.OAuth,
+  client_id: System.get_env("BUFFER_CLIENT_ID"),
+  client_secret: System.get_env("BUFFER_CLIENT_SECRET"),
+  access_token: System.get_env("BUFFER_ACCESS_TOKEN")
 
 config :dogma,
   rule_set: Dogma.RuleSet.All
